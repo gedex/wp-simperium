@@ -34,7 +34,6 @@ class WP_Simperium_Plugin {
 		$this->client = new WP_Simperium_Client( $this );
 		$this->hooks  = new WP_Simperium_Hooks( $this );
 		$this->cron   = new WP_Simperium_Cron( $this );
-		// $this->listener = new WP_Simperium_Listener( $this );
 
 		do_action( 'simperium_init', $this );
 	}
