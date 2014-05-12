@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: Simperium
- * Plugin URI: https://github.com/x-team/wp-simperium
+ * Plugin URI: https://github.com/gedex/wp-simperium
  * Description: This plugin contains easy-to-use API that uses WP HTTP API to send data to Simperium
  * Version: 0.1.0
  * Author: Akeda Bagus
