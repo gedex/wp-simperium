@@ -236,7 +236,7 @@ class WP_Simperium_Client {
 			return $access_token;
 		}
 
-		// There's edge case that access_token will be returned with empty string,
+		// There's an edge case that access_token will be returned with empty string,
 		// such as when username has already registered. I don't want to slow down
 		// your site by making more than one request for the sake of requesting
 		// access_token. In such case, you can supply access_token in config or

@@ -18,7 +18,7 @@ class WP_Simperium {
 	private static $buffer = array();
 
 	/**
-	 * Send data.
+	 * Send data to Simperium.
 	 *
 	 * @param string $bucket Bucket's name
 	 * @param array  $data   Data to send
@@ -50,6 +50,8 @@ class WP_Simperium {
 	}
 
 	/**
+	 * Saves data to `self::$buffer` property. Also did processing on
+	 * the data as required by `changes` endpoint.
 	 *
 	 * @param string $bucket Bucket's name
 	 * @param array  $data   Data to send
@@ -86,6 +88,10 @@ class WP_Simperium {
 	}
 
 	/**
+	 * Flush the buffer.If `$bucket` is not empty then it will
+	 * flush buffer for that bucket, othewise all buffer will be
+	 * flushed.
+	 *
 	 * @param string $bucket
 	 */
 	public static function flush_buffer( $bucket = '' ) {
@@ -99,6 +105,8 @@ class WP_Simperium {
 	}
 
 	/**
+	 * Bulk post to Simperium bucket where its data comes from buffer.
+	 *
 	 * @param string $bucket
 	 */
 	private static function _send_buffered_bucket( $bucket ) {
@@ -117,6 +125,8 @@ class WP_Simperium {
 	}
 
 	/**
+	 * Gets the client.
+	 *
 	 * @return WP_Simperium_Client
 	 */
 	private static function _get_client() {

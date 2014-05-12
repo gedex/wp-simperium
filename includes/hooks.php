@@ -33,6 +33,8 @@ class WP_Simperium_Hooks {
 	/**
 	 * @param string $bucket Bucket's name
 	 * @param array  $data   Data to send
+	 *
+	 * @action simperium_send_data
 	 */
 	public function send_data( $bucket, array $data ) {
 		WP_Simperium::send_data( $bucket, $data );
@@ -41,14 +43,17 @@ class WP_Simperium_Hooks {
 	/**
 	 * @param string $bucket Bucket's name
 	 * @param array  $data   Data to send
+	 *
+	 * @action simperium_send_buffered_data
 	 */
 	public function send_buffered_data( $bucket, array $data ) {
 		WP_Simperium::send_buffered_data( $bucket, $data );
 	}
 
 	/**
-	 *
 	 * @param  string $bucket Bucket's name
+	 *
+	 * @action simperium_flush_buffer
 	 */
 	public function flush_buffer( $bucket = '' ) {
 		WP_Simperium::flush_buffer( $bucket );
