@@ -20,10 +20,10 @@ This plugin is intended for developer to send data to Simperium. Followings are 
 
 Once this plugin is installed and activated, you can send data to Simperium in following ways:
 
-1. Via action hook: `do_action( 'simperium_send_data', $data, $bucket )` or `do_action( 'simperium_send_buffered_data', $data, $bucket )`.
+1. Via action hook: `do_action( 'simperium_send_data', $bucket, $data )` or `do_action( 'simperium_send_buffered_data', $bucket, $data )`.
    The first hook, will send the `$data` immediately, while the later will send the data to buffer and will send all
    buffered data to Simperium at once after calling `do_action( 'simperium_flush_buffer', $bucket )`. If `$bucket` arg is provided, it only flushes buffered data that's targetted to `$bucket`.
-2. Via helper method: `WP_Simperium::send_data( $data, $bucket )` or `WP_Simperium::send_buffered_data( $data, $bucket )`.
+2. Via helper method: `WP_Simperium::send_data( $bucket, $data )` or `WP_Simperium::send_buffered_data( $bucket, $data )`.
    To flush buffer, you call `WP_Simperium::flush_buffer( $bucket )`. Again, `$bucket` arg is optional.
 
 The value of `$data` MUST BE in key-value array structure as nested structure is not supported by Simperium.
