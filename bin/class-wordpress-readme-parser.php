@@ -85,6 +85,11 @@ class WordPress_Readme_Parser {
 
 		$general_section_formatter = function ( $body ) use ( $params ) {
 			$body = preg_replace(
+				'/^`$/m',
+				'```',
+				$body
+			);
+			$body = preg_replace(
 				'#\[youtube\s+(?:http://www\.youtube\.com/watch\?v=|http://youtu\.be/)(.+?)\]#',
 				'[![Play video on YouTube](http://i1.ytimg.com/vi/$1/hqdefault.jpg)](http://www.youtube.com/watch?v=$1)',
 				$body
