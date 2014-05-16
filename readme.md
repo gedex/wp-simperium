@@ -12,7 +12,13 @@ This plugin contains easy-to-use API that uses WP HTTP API to send data to Simpe
 
 ## Description ##
 
-### How to use it ###
+This plugin is intended for developer to send data to Simperium. Followings are use cases in which this plugin might come in handy:
+
+1. You need post-processing (for instance pinging dozen web services after a post is published) without blocking request. In this case you call provided actions or helper methods, then you spawn long-live process (either from the same server or different server) that listens to changes from your Simperium bucket for post-processing.
+1. You need to log events that happen during request lifecycle under restricted circumstances (for instance it won't possible to access log files on the server).
+
+**How to use it**
+
 Once this plugin is installed and activated, you can send data to Simperium in following ways:
 
 1. Via action hook: `do_action( 'simperium_send_data', $bucket, $data )` or `do_action( 'simperium_send_buffered_data', $bucket, $data )`.
@@ -25,31 +31,35 @@ The value of `$data` MUST BE in key-value array structure as nested structure is
 
 Before using the action hooks or helper methods, you need to supply Simperium app credentials via `simperium_config` filter, for example:
 
-`
-add_filter( `simperium_config`, array(
-	'app_id'  => 'YOUR_APP_ID',
-	'api_key' => 'YOUR_API_KEY',
-) );
-`
+```
+add_filter( 'simperium_config', function() {
+	return array(
+		'app_id'  => 'YOUR_APP_ID',
+		'api_key' => 'YOUR_API_KEY',
+	)
+} );
+```
 
 In addition to `app_id` and `api_key` you can pass `username` and/or `access_token` to the array config. If `access_token` is omitted, the plugin will request `access_token` from Simperium with provided `username` (if exists) or `get_bloginfo( 'admin_email' )` and store the info in option. Subsequent calls will read `access_token` information from option, but can be bypassed by providing `access_token` in array config. It's preferred to supply your own `access_token` or `username` that hasn't
 registered yet. Please keep in mind that token has 30 days life span. If you're using `access_token` that's automatically retrieved by the plugin, you don't need to worry as scheduled event will refresh the token per 29 days.
 
-### Sender Examples ###
+**Sender Examples**
+
 I've created [sender examples plugin](https://github.com/gedex/wp-simperium-sender-examples) that you can use as a starting point, though it will run without any customization. Currently it has following features:
 
 * Send post data once post status is transitioned to public.
 * Send new comment.
 * More will come later..
 
-### Consumer Examples ###
+**Consumer Examples**
+
 I'm working to provide listener apps, written in PHP (stay tuned!), for now you can check [Simperium examples](https://simperium.com/samples/) and their awesome libraries.
 
-### Contributing ###
+**Contributing**
+
 * Development of this plugin is done on [GitHub](https://github.com/x-team/wp-simperium). Pull requests are always welcome.
 * For **Sender** apps feedback, please check its [GitHub repo](https://github.com/gedex/wp-simperium-sender-examples).
 * For **Consumer** apps feedback, please stay tuned!
-
 
 ## Installation ##
 
