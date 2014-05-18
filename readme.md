@@ -57,7 +57,7 @@ I'm working to provide listener apps, written in PHP (stay tuned!), for now you 
 
 **Contributing**
 
-* Development of this plugin is done on [GitHub](https://github.com/x-team/wp-simperium). Pull requests are always welcome.
+* Development of this plugin is done on [GitHub](https://github.com/gedex/wp-simperium). Pull requests are always welcome.
 * For **Sender** apps feedback, please check its [GitHub repo](https://github.com/gedex/wp-simperium-sender-examples).
 * For **Consumer** apps feedback, please stay tuned!
 
